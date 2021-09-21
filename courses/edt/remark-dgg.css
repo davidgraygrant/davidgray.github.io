@@ -264,9 +264,6 @@ h3 {
   text-align: center;
 }
 
-.remark-slide-content.standout strong {
-  color: #37f495;
-}
 .remark-slide-content.sectiontitle .remark-slide-number,
 .remark-slide-content.sectiontitle .footer {
   display: none;
