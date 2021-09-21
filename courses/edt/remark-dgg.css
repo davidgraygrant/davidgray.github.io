@@ -256,11 +256,16 @@ h3 {
   margin: 0;
   padding: 1em 2em;
 }
+
 .remark-slide-content.standout {
   /* background: #5657F6; */
   background: #3738f4;
   text-shadow: 0 0 20px #666;
   text-align: center;
+}
+
+.remark-slide-content.standout strong {
+  color: #37f495;
 }
 .remark-slide-content.sectiontitle .remark-slide-number,
 .remark-slide-content.sectiontitle .footer {
