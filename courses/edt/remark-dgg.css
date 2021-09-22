@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Heebo:300,400,500,700|Inconsolata');
-
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
 /* Global Styles */
 .remark-slide-content h1, .remark-slide-content h2 {
@@ -256,14 +257,12 @@ h3 {
   margin: 0;
   padding: 1em 2em;
 }
-
 .remark-slide-content.standout {
   /* background: #5657F6; */
   background: #3738f4;
   text-shadow: 0 0 20px #666;
   text-align: center;
 }
-
 .remark-slide-content.sectiontitle .remark-slide-number,
 .remark-slide-content.sectiontitle .footer {
   display: none;
@@ -278,7 +277,7 @@ h3 {
   font-size: 0.9em;
   font-family: sans-serif;
   font-size: 85%;
-  font-family: "Avenir Next";
+  font-family: "Droid Sans";
 }
 .remark-slide-content table th,
 .remark-slide-content table td {
