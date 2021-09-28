@@ -243,7 +243,7 @@ h3 {
   text-shadow: 0 0 20px #333;
   text-align: center;
 }
-.remark-slide-content.sectiontitle h1, .remark-slide-content.standout h1 {
+.remark-slide-content.sectiontitle h1, .remark-slide-content.standout h1, .remark-slide-content.sectiontitle h2, .remark-slide-content.standout h2 {
   font-size: 160%;
   color: #f3f3f3;
   line-height: 1.2em;
@@ -338,7 +338,7 @@ h3 {
   font-size: 3rem;
 }
 .remark-slide-content h2 {
-  font-size: 2.25rem;
+  font-size: 3rem;
 }
 .remark-slide-content h3 {
   font-size: normalsize;
