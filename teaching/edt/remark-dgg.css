@@ -49,6 +49,15 @@ img {
 	display: none;
 }
 
+/* Centered image */
+
+.img-middle img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+  vertical-align: center;
+}
+
 /* Title Slide Layout. Use .smokescreen[...] to contain the h1/h2. */
 .remark-slide-content.title h1, .remark-slide-content.title h2, .remark-slide-content.title h3 {
 	color: white;
@@ -71,6 +80,7 @@ img {
 	vertical-align: middle;
 	text-align: center;
 }
+
 
 /* Columnar Layouts. Two- and three-column layouts use .col classnames and float
  * next to each other. The img-right uses .col and .rc (for right-column) and
