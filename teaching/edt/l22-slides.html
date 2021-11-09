@@ -47,10 +47,6 @@ In each of these cases, there's some feature of individuals that is taken to be 
 -   And the institution wants to determine how likely it is that particular individuals have that feature, given the evidence available
 -   To do that, they take data about how other individuals have behaved in the past -- such as people who were previously granted loans -- and they train a predictive algorithm on that data
 
-The practice of using predictive algorithms to allocate important benefits and burdens raises a wide variety of ethical concerns, including concerns about discrimination, privacy, transparency, due process, and accountability
-
-- Today I'm going to be talking about a subset of these concerns -- concerns about wrongful discrimination -- and a possible solution to them that has been developed by computer scientists -- statistical criteria of fairness
-
 ---
 
 background-image: url(xkcd-background.png)
@@ -183,7 +179,7 @@ class: center, fullbleed
 
 ---
 
-# Amazon Prime Same-Day Delivery
+## Amazon Prime Same-Day Delivery
 
 "In six major same-day delivery cities ... **the service area excludes predominantly black ZIP codes to varying degrees**, according to a Bloomberg analysis that compared Amazon same-day delivery areas with U.S. Census Bureau data.
 
@@ -191,31 +187,16 @@ In Atlanta, Chicago, Dallas, and Washington, cities still struggling to overcome
 
 ---
 
+## Questions about the examples
+
+1. Why was the algorithm apparently biased against members of the relevant social group?
+2. Would using the algorithm as intended constitute wrongful discrimination?
+
+---
+
 class: sectiontitle
 
 # What is wrongful discrimination?
-
----
-
-## Wrongful discrimination
-
-A decision procedure **wrongfully discriminates** against social group *x*
-if and only if:
-
-1.  there is a **social group** *y* such that the procedure treats the
-    members of *x* **less favorably** than the members of *y*;
-2.  part of the **explanation** for the difference in treatment is their
-    membership in *x* and *y*, respectively; and
-3.  the difference in treatment is **not morally justified**.
-
----
-
-## Are these discrimination?
-
-1.  A school runs a lottery for tickets to the school play, and men
-    receive 75% of the tickets (completely by chance)
-2.  A hospital has a policy of scheduling women over 40 for annual
-    mammograms, but not men or women under 40
 
 ---
 
@@ -235,6 +216,28 @@ Why not?
 
 - Students whose names start with A-G don't constitute a social group in the relevant sense
 - To form a social group in the relevant sense, they need to be treated as a group by the society in general for a wide variety of purposes
+
+---
+
+## Wrongful discrimination
+
+A decision procedure **wrongfully discriminates** against social group *x*
+if and only if:
+
+1.  there is a **social group** *y* such that the procedure treats the
+    members of *x* **less favorably** than the members of *y*;
+2.  part of the **explanation** for the difference in treatment is their
+    membership in *x* and *y*, respectively; and
+3.  the difference in treatment is **not morally justified**.
+
+---
+
+## Are these wrongful discrimination?
+
+1.  A school runs a lottery for tickets to the school play, and men
+    receive 75% of the tickets (completely by chance)
+2.  A hospital has a policy of scheduling women over 40 for annual
+    mammograms, but not men or women under 40
 
 ---
 
@@ -337,6 +340,12 @@ background-image: url(amazon-bkg.png)
 
 Why did the system tend to penalize applications from women?
 
+--
+
+Answer: **biased training data**
+
+???
+
 - The model was trained on **data from past hiring managers**, who tended to rate women less favorably than similarly qualified men
 - Women's resumes are **more likely to include the word "women's"** e.g. "women's soccer"
 - Women's resumes are **less likely to include martial language** like "execute"
@@ -367,6 +376,12 @@ Obermeyer et al. analyzed data from a large hospital and found that:
 
 Why was this happening?
 
+--
+
+Answer: **biased proxy**
+
+???
+
 - The designers of the system used **expected consumption** of health care resources as a proxy for **expected need** for health care resources
 - Black Americans consume fewer health care resources than similarly sick white Americans
 
@@ -392,6 +407,12 @@ class: img-right
 ![](image-20211108141250602.png)
 
 Why was this happening?
+
+--
+
+Answer: the data accurately reflect **preexisting social inequality**
+
+???
 
 - Black Americans are **less likely to be Amazon Prime subscribers** than white Americans
 - Amazon decides whether to offer Same-Day delivery to a zip code **based on how many subscribers** live in the area
