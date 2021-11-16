@@ -133,16 +133,9 @@ class: img-right
 
 ---
 
-## Three causes of algorithmic discrimination
+## Two causes of algorithmic discrimination
 
-1. Biased predictions due to biased **training data** (Amazon resume evaluation system)
-
---
-
-1. Biased predictions due to a biased **proxy** (Care management enrollment)
-
---
-
+1. Biased predictions due to biased **proxy** (Amazon resume evaluation system, care management enrollment)
 1. Unbiased predictions, but decisions that **reproduce preexisting inequalities** (Amazon Prime same-day delivery)
 
 ---
@@ -344,15 +337,25 @@ In more technical terms, what ProPublica found was that the false positive rate 
 
 ## ProPublica's analysis
 
-**True positive** = labeled high risk, reoffends within two years
+**Positive** = labeled "high risk"
 
-**False positive** = labeled high risk, doesn't reoffend
+**Negative** = labeled "low risk"
 
-???
+**Actual positive** or **ground truth positive** = reoffends within two years
 
-A defendant is a true postive just in case they are labeled high risk, and they do go on to reoffend within two years, as predicted
+**Actual negative** or **ground truth negative** = doesn't reoffend within two years
 
-A defendant is a false positive in the relevant sense if they are labeled high risk, but do not go on to reoffend within two years
+---
+
+## ProPublica's analysis
+
+**True positive** = labeled "high risk," reoffends
+
+**False positive** = labeled "high risk," doesn't reoffend
+
+**True negative** = labeled "low risk," doesn't reoffend
+
+**False negative** = labeled "low risk," reoffends
 
 ---
 
@@ -360,15 +363,13 @@ A defendant is a false positive in the relevant sense if they are labeled high r
 
 **False positive rate:** the probability that a randomly selected defendant who does not reoffend will be labeled "high risk"
 $$
-FPR = \frac{\text{false positives}}{\text{all negatives}} = \frac{\text{labeled HR, doesn't reoffend}}{\text{doesn't reoffend}}
+FPR = \frac{\text{false positives}}{\text{g.t. negatives}} = \frac{\text{labeled HR, doesn't reoffend}}{\text{doesn't reoffend}}
 $$
 ???
 
 The false positive rate is the probability that a randomly selected defendant that does not go on to reoffend will be labeled "high risk," and so turn out to be a false positive
 
--   To calculate the false positive rate for a group relative to a dataset like the one ProPublica analyzed, you take the total number of false positives for the group, and divide it by the total number of actual negatives for the group -- the number of defendants in the group that don't reoffend within two years
-
-If this is going by a little fast, don't worry, we'll come back to it
+-   To calculate the false positive rate for a group relative to a dataset like the one ProPublica analyzed, you take the total number of false positives for the group, and divide it by the total number of "ground truth" negatives for the group -- the number of defendants in the group that don't reoffend within two years
 
 --
 
