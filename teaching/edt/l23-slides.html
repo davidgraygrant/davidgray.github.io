@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EDT L23 Algorithmic Discrimination</title>
+    <meta charset="utf-8">
+    <link href="remark-dgg.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: img-caption
+
+
+# L23 Algorithmic Discrimination
+
+![](linearregression.png)
+
+---
+
+# Agenda
+
+1. Wrongful discrimination (review)
+2. Candidate examples; causes
+3. COMPAS case study
+
+---
+
+class: sectiontitle
+
+# Wrongful discrimination (review)
+
+---
+
+## Wrongful discrimination
+
+A decision procedure **wrongfully discriminates** against social group *x*
+if and only if:
+
+1.  there is a **social group** *y* such that the procedure treats the
+    members of *x* **less favorably** than the members of *y*;
+2.  part of the **explanation** for the difference in treatment is their
+    membership in *x* and *y*, respectively; and
+3.  the difference in treatment is **not morally justified**.
+
+---
+
+## Direct and indirect discrimination 
+
+**Direct discrimination** = wrongful discrimination resulting from a negative attitude toward the social group (animus or indifference)
+
+**Indirect discrimination** = wrongful discrimination that does not result from such an attitude
+
+---
+
+## Failing to treat similar people similarly
+
+**The Aristotelian conception of fairness:** treating people fairly requires treating similar people similarly
+
+- I.e., fairness requires that people who are **similar in all morally relevant respects** be treated in **similarly favorable ways**
+- **Example:** declining a mortgage applicant from a Black applicant, when you would have approved the application had the applicant been White
+
+---
+
+## Reinforcing structural discrimination
+
+**Structural discrimination** = "When the rules of a society’s major institutions reliably produce disproportionately disadvantageous outcomes for the members of certain salient social groups and the production of such outcomes is unjust" (SEP, "Discrimination")
+
+**Candidate example:** requiring a high school diploma for a job that really does not require it, in light of the fact that Black Americans are significantly less likely to have a high school diploma (89%) than White Americans (79%)
+
+---
+
+class: sectiontitle
+
+# Candidate examples of algorithmic discrimination
+
+---
+
+## Care management enrollment 
+
+Obermeyer et al. analyzed data from a large hospital and found that:
+
+-   Black patients with a given risk score tended to be **significantly
+    sicker** than white patients
+-   As a result, black patients were **much less likely to be enrolled**
+    than equally sick white patients
+
+---
+
+## Care management enrollment
+
+Why was this happening?
+
+*  The designers of the algorithm used a **biased proxy**, expected consumption of health care resources
+
+???
+
+- The designers of the system used **expected consumption** of health care resources as a proxy for **expected need** for health care resources
+- Black Americans consume fewer health care resources than similarly sick white Americans
+
+---
+
+## Care management enrollment
+
+1. Would using the system result in (a) failing to treat similar people similarly or (b) reinforcing structural discrimination without adequate justification?
+2. Would using the system constitute (a) direct discrimination, (b) indirect discrimination, or (c) neither?
+
+---
+
+class: img-right
+
+## Amazon Prime same-day delivery
+
+![](image-20211108141250602.png)
+
+Why was this happening?
+
+* The data accurately reflect **preexisting social inequality**
+
+???
+
+- Black Americans are **less likely to be Amazon Prime subscribers** than white Americans
+- Amazon decides whether to offer Same-Day delivery to a zip code **based on how many subscribers** live in the area
+
+---
+
+class: img-right
+
+## Amazon Prime same-day delivery
+
+1. Would using the system result in (a) failing to treat similar people similarly or (b) reinforcing structural discrimination without adequate justification?
+2. Would using the system constitute (a) direct discrimination, (b) indirect discrimination, or (c) neither?
+
+---
+
+## Three causes of algorithmic discrimination
+
+1. Biased predictions due to biased **training data** (Amazon resume evaluation system)
+
+--
+
+1. Biased predictions due to a biased **proxy** (Care management enrollment)
+
+--
+
+1. Unbiased predictions, but decisions that **reproduce preexisting inequalities** (Amazon Prime same-day delivery)
+
+---
+
+## Statistical criteria of fairness 
+
+Statistical measures of a predictive algorithm's performance
+
+- Measure how **errors** are distributed
+
+  
+
+- Purport to measure **dimensions of fairness** 
+
+???
+
+Computer scientists have responded to concerns about algorithmic discrimination by proposing that we quantify the degree to which particular algorithms are unfairly biased using so-called "statistical criteria of fairness"
+
+-   These are statistical measures of an algorithm's predictive performance -- they measure how often the algorithm makes particular kinds of mistakes, as well as how those mistakes are distributed across different groups
+-   They're also supposed to be ways of measuring different dimensions of fairness in prediction
+-   Poor performance on a particular criterion is supposed to demonstrate that the algorithm treats members of the relevant group unfairly in at least one respect
+
+--
+
+- Can be imposed as **design constraints**
+
+???
+
+An advantage of the approach is that it's possible to impose statistical criteria of fairness as design constraints, in the sense that you can specifically design a predictive algorithm to satisfy them
+
+This seems like a promising strategy for addressing concerns about algorithmic discrimination
+
+- However, the various criteria of fairness that Computer Scientists have proposed tend to conflict with one another, and it's often not clear what we should conclude from the fact that they are violated in particular cases, because they tend not to map onto existing principles of distributive justice in a straightforward way
+
+Over the next couple of weeks, we will be focusing on what is undoubtedly the best-known debate about statistical criteria of fairness, the debate over the COMPAS recidivism prediction tool
+
+---
+
+class: sectiontitle
+
+# COMPAS
+
+---
+
+## Reading quiz on Angwin et al., "Machine Bias"
+
+Why, according to ProPublica's researchers, is COMPAS unfairly biased against black defendants?
+
+---
+
+class: img-right-full
+
+## COMPAS
+
+![](compass.jpeg)
+
+Recidivism prediction instrument
+
+- Widely used in US criminal justice system
+
+  
+
+- Estimates **risk of committing a crime** within 2 years
+
+  
+
+- Outputs **recidivism risk score** between 1-10
+
+???
+
+COMPAS is a recidivism prediction instrument developed by Northpointe Inc. that is used widely by the US criminal justice system to make decisions about pretrial detention, parole, and sentencing
+
+- The purpose of the tool is to estimate the likelihood that a person will commit a crime within the next two years
+- The systems takes as input an intake survey completed by the defendant + information from criminal record, and outputs a risk score between 1 and 10
+- A score between 1-4 is supposed to represent a low risk of recidivism, 5-7 medium risk, and 8-10 high risk
+
+---
+
+class: img-right-full
+
+## COMPAS
+
+Recidivism prediction instrument
+
+- Uses **risk of being charged** as a proxy for **risk of recidivism**
+
+???
+One important caveat is that while COMPAS attempts to measure recidivism risk -- the risk that someone will commit a crime -- it doesn't measure that directly
+
+- We don't have a direct way of telling whether a given defendant goes on to commit a crime or not, which means that we need to use a proxy for recidivism to train a predictive algorithm
+- COMPAS uses the likelihood that the person will be **charged** with a crime as a proxy for whether the defendant reoffends, since that's something that we have reliable data on
+
+**Q:** why might someone think that that's a problem?
+
+---
+
+class: img-right-full
+
+## Pretrial detention
+
+Two kinds of "risk" that are used to **justify** pretrial detention:
+
+1. **Failure to appear**—how likely is it that the defendant will appear at trial?
+2. **Recidivism**—how likely is it that the defendant will commit a crime if released?
+
+???
+
+The use case for COMPAS that we'll be focusing on is pretrial detention
+
+- The rationale for pretrial detention is that even though the defendant has not yet been convicted, it can still be justifiable to detain them until their trial if they pose a sufficiently serious threat to others
+- A high recidivism risk score is supposed to indicate a high likelihood that the defendant will commit crimes if released, and therefore that they are sufficiently dangerous to others to justify detaining them until their trial
+
+---
+
+# Features used by COMPAS
+
+![image-20211115124207861](image-20211115124207861.png# center)
+
+.footer[*Source:* [Practitioner's Guide to COMPAS CORE](http://www.northpointeinc.com/downloads/compas/Practitioners-Guide-COMPAS-Core-_031915.pdf)]
+
+???
+
+Some of the features COMPAS uses to predict recidivism risk
+
+---
+
+## Age and recidivism
+
+![image-20211115125540588](image-20211115125540588.png# center)
+
+.footer[*Source:* [US Sentencing Commission report](https://www.ussc.gov/research/research-reports/effects-aging-recidivism-among-federal-offenders)]
+
+---
+
+## Age and recidivism
+
+> "Older offenders were substantially less likely than younger offenders to recidivate following release. Over an eight-year follow-up period, 13.4 percent of offenders age 65 or older at the time of release were rearrested compared to 67.6 percent of offenders younger than age 21 at the time of release. The pattern was consistent across age groupings, and recidivism measured by rearrest, reconviction, and reincarceration declined as age increased."
+
+.footer[*Source:* [US Sentencing Commission report](https://www.ussc.gov/research/research-reports/effects-aging-recidivism-among-federal-offenders)]
+
+???
+
+https://www.ussc.gov/research/research-reports/effects-aging-recidivism-among-federal-offenders
+
+---
+
+## "Social achievement" and recidivism
+
+![image-20211115125050569](image-20211115125050569.png# center)
+
+.footer[*Source:* [Practitioner's Guide to COMPAS CORE](http://www.northpointeinc.com/downloads/compas/Practitioners-Guide-COMPAS-Core-_031915.pdf)]
+
+---
+
+class: img-centered, inverse
+![](machinebias-full.png# center)
+
+???
+
+In May of 2016, researchers at ProPublica published an expose arguing that COMPAS is unfairly biased against Black defendants on the basis of a statistical analysis of the algorithm's performance
+
+- Here's their summary of what they did
+
+---
+
+class: img-right
+
+## ProPublica's analysis
+
+![](browardcounty.png)
+
+> "We obtained the risk scores assigned to more than 7,000 people arrested in Broward County, Florida, in 2013 and 2014 and checked to see how many were charged with new crimes over the next two years, the same benchmark used by the creators of the algorithm.".red[\*]
+
+.footer[.red[\*] Angwin et al. (2016), "Machine Bias"]
+
+???
+
+[Read quote]
+
+And here's what ProPublica found
+
+---
+
+## ProPublica's analysis
+
+> "[We] turned up significant racial disparities ... In forecasting who would re-offend, the algorithm made mistakes with black and white defendants at roughly the same rate but in very different ways.
+>
+> The formula was particularly likely to **falsely flag black defendants as future criminals**, wrongly labeling them this way at almost twice the rate as white defendants.".red[\*]
+
+.footer[.red[\*] Angwin et al. (2016), "Machine Bias"]
+
+???
+
+[read quote]
+
+In more technical terms, what ProPublica found was that the false positive rate for Black defendants was much higher than the false positive rate for white defendants
+
+---
+
+## ProPublica's analysis
+
+**True positive** = labeled high risk, reoffends within two years
+
+**False positive** = labeled high risk, doesn't reoffend
+
+???
+
+A defendant is a true postive just in case they are labeled high risk, and they do go on to reoffend within two years, as predicted
+
+A defendant is a false positive in the relevant sense if they are labeled high risk, but do not go on to reoffend within two years
+
+---
+
+## ProPublica's analysis
+
+**False positive rate:** the probability that a randomly selected defendant who does not reoffend will be labeled "high risk"
+$$
+FPR = \frac{\text{false positives}}{\text{all negatives}} = \frac{\text{labeled HR, doesn't reoffend}}{\text{doesn't reoffend}}
+$$
+???
+
+The false positive rate is the probability that a randomly selected defendant that does not go on to reoffend will be labeled "high risk," and so turn out to be a false positive
+
+-   To calculate the false positive rate for a group relative to a dataset like the one ProPublica analyzed, you take the total number of false positives for the group, and divide it by the total number of actual negatives for the group -- the number of defendants in the group that don't reoffend within two years
+
+If this is going by a little fast, don't worry, we'll come back to it
+
+--
+
+![](pp-fpr-chart-slim.png)
+
+
+
+???
+
+What ProPublica found when they looked at data from defendants in Broward county was that the false positive rate for Black defendants was much higher than the false positive rate for white defendants
+
+-   They took this to be excellent evidence that COMPAS is unfairly biased against Black defendants, because it violates an intuitively plausible statistical criterion of fairness, equal specificity
+
+--
+
+**Equal Specificity:** the false positive rate for Black defendants is similar to (or lower than) the false positive rate for white defendants
+
+???
+
+Equal specificity requi requires that [read]
+
+---
+
+## Northpointe's response
+
+**Equal Calibration:** defendants who receive the same risk score reoffend at similar rates, regardless of race
+
+E.g., among defendants who receive a COMPAS score of 7:
+
+- ~60% of Black defendants reoffend
+- ~60% of white defendants reoffend
+
+???
+
+In response, the company that developed COMPAS -- Northpointe -- argued that COMPAS is *not* biased against Black defendants because it has a different statistical property, Equal Calibration
+
+-   Equal Calibration requires that defendants who receive the same risk score reoffend at similar rates, regardless of race
+-   For example, if Black defendants who receive a COMPAS score of 7 reoffend about 60% of the time, then white defendants who receive a COMPAS score of 7 should also reoffend about 60% of the time.
+-   Analyses that various groups have conducted do seem to back up Northpointe's claim that COMPAS is calibrated, at least as measured using rates of being charged with a new crime as a proxy for recidivism
+
+---
+
+![](corbett-davies-graph.png# center)
+
+???
+
+Here's a chart from an independent analysis conducted by some researchers in the fair machine learning community, Corbett-Davies et al.
+
+- So why is this supposed to show that COMPAS is not unfairly biased against Black defendants?
+
+---
+
+>"Northpointe contends [COMPAS scores] are indeed fair because **scores mean essentially the same thing** regardless of the defendant’s race. Among defendants who scored a seven on the COMPAS scale, 60 percent of white defendants reoffended, which is nearly identical to the 61 percent of black defendants who reoffended. Consequently, Northpointe argues, when judges see a defendant’s risk score, they need not consider the defendant’s race when interpreting it.".red[\\*]
+
+.footer[.red[\*] Corbett-Davies et al. (2016)]
+
+???
+This is from the Corbett-Davies article
+
+- So, since COMPAS scores represent the same level of recidivism risk for Black and white defendants, COMPAS scores treat relevantly similar Black and white defendants similar, and so are not unfairly biased on the basis of race
+
+[Read slide]
+
+---
+
+## Fairness requirements
+
+Property P is a **requirement of fairness in recidivism prediction** just in case using a method that lacks P to make preventive detention decisions would be pro tanto unfair
+
+-   **Pro tanto unfair** = unfair in some respect
+
+???
+
+One way to understand the debate between ProPublica's researchers and Northpointe's researchers:
+
+- the two groups of researchers have identified two different "requirements of fairness in recidivism prediction"
+
+Pro tanto unfair = unfair in some respect
+
+-   Example: suppose you promise one employee a promotion, but then you get hit on the head and completely forget, and promise a second employee the same job. When it comes time to promote someone, there's no way for you to be perfectly fair to both employees, since you made conflicting promises, so your treatment of one of them will be unfair to some extent, even if you make the fairest decision possible under the circumstances
+-   So your decision will be pro tanto unfair no matter what you do, which is just to say that it will inevitably be at least pro tanto unfair
+
+---
+
+## The COMPAS debate
+
+- **ProPublica:** Equal Specificity is a requirement of fairness
+
+  
+
+- **Northpointe:** Equal Calibration is a requirement of fairness
+
+???
+
+So we can understand ProPublica as argument that Equal Specificity is a requirement of fairness, and that COMPAS is unfair because it violates it
+
+-   And we can see Northpointe as arguing that Equal Calibration is a requirement of fairness, but Equal Specificity is not, and so that COMPAS is not unfairly biased against Black defendants
+
+--
+
+- **Impossibility result:** if base rates differ, Equal Specificity are Equal Calibration are incompatible—so fairness is impossible!
+
+???
+
+-   Other researchers subsequently demonstrated that if Black defendants reoffend at higher rates than white defendants, as does seem to be the case for at least some kinds of crimes, then it's impossible for any recidivism prediction instrument to satisfy both Equal Specificity and Equal Calibration
+-   This led some people to claim that fairness in recidivism prediction is impossible under current conditions
+-   In the ensuing debate, it's generally conceded that Equal Calibration is a requirement of fairness, but there's disagreement about whether Equal Specificity is
+
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script>
+  var slideshow = remark.create({
+    ratio:'16:9'
+  });
+</script>
+  </body>
+</html>
