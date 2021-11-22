@@ -3,6 +3,18 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
 /* Global Styles */
+
+.remark-slide-content.img-vertical {
+  background: #343434;
+  margin: 0;
+}
+.remark-slide-content.img-vertical img {
+  margin: -60px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 680px;
+}
+
 .remark-slide-content h1, .remark-slide-content h2 {
   font-weight: 500;
   line-height: 1.25;

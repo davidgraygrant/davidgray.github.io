@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EDT L24 COMPAS Case Study</title>
+    <meta charset="utf-8">
+    <link href="remark-dgg.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: sectiontitle
+
+# L25 Is using COMPAS unfair?
+
+---
+
+## Three arguments that using COMPAS is unfair
+
+1. Higher **false positive rate** for black defendants than white defendants
+2. Systematically **overestimates** recidivism risk for black defendants relative to white defendants
+3. Uses **input features** that are an unfair basis for making pretrial detention decisions
+
+???
+
+Caveat: all of these issues are very controversial! Both politically and among theorists. 
+
+- We're not looking for a particular answer -- we don't know the answers
+- Any answer is completely fine provided you explain why a reasonable person might find it plausible
+- What we're looking for evidence that you have thought through the issues discussed in lecture and the readings
+
+---
+
+## False positive rates
+
+- **ProPublica:** Equal False Positive Rates is a requirement of fairness
+- **Northpointe:** Equal Calibration is a requirement of fairness
+- **Impossibility result:** if base rates differ, Equal False Positive Rates and Equal Calibration are normally incompatible
+
+### Base rate
+
+The percentage of defendants from the group that reoffend
+
+$$\text{BR} = \frac{\text{TP+FN}}{\text{TP+TN+FP+FN}} = \frac{\text{defendants that reoffend}}{\text{all defendants}}$$
+
+---
+
+## ProPublica's analysis
+
+> "[We] turned up significant racial disparities ... In forecasting who would re-offend, the algorithm made mistakes with black and white defendants at roughly the same rate but in very different ways.
+>
+> The formula was particularly likely to **falsely flag black defendants as future criminals**, wrongly labeling them this way at almost twice the rate as white defendants.".red[\*]
+
+.footer[.red[\*] Angwin et al. (2016), "Machine Bias"]
+
+---
+
+## Three arguments that using COMPAS is unfair
+
+1. Higher **false positive rate** for black defendants than white defendants
+2. Systematically **overestimates** recidivism risk for black defendants relative to white defendants
+3. Uses **input features** that are an unfair basis for making pretrial detention decisions
+
+---
+
+## Statistical bias
+
+"For some people, to say that a decision procedure is **'biased'**  is to say that it is **statistically unsound**. A risk-assessment algorithm is racially biased in this sense if it systematically over- or understates the average risk of one racial group relative to another."
+
+---
+
+class: smaller
+
+## ProPublica's analysis
+
+**False Positive Rate (FPR):** the probability that a randomly selected defendant who does not reoffend will be labeled "high risk"
+$$
+FPR = \frac{\text{FP}}{\text{FP + TN}} = \frac{\text{labeled HR, doesn't reoffend}}{\text{doesn't reoffend}}
+$$
+![](pp-fpr-chart-slim-7614040.png)
+
+### Question
+
+Does this show that COMPAS is statistically biased against black defendants?
+
+---
+
+class: smaller
+
+## FPR evidence of statistical bias?
+
+Mayson:
+
+> "The racial disparity in error rates was not, however, the result of invidious distortion in the COMPAS algorithm itself. It was a mathematical result of the divergent rates of arrest between the black and white defendants in the underlying data set. Because the rate of arrest was higher among the black defendants, they, on average, had higher arrest-risk profiles. When the average risk is higher for one group than for another, a greater proportion of the former group will be  predicted to be rearrested, and a greater proportion of that group will also be mistakenly predicted to be rearrested. This is true no matter how carefully designed the algorithm is, so long as the algorithm is also striving to have equal predictive accuracy for each racial group."
+
+---
+
+## FPR evidence of statistical bias?
+
+Suppose group A has a **higher base rate** of recidivism than group B
+
+Suppose our recidivism prediction method is **statistically unbiased**—it does not over- or underestimate the average recidivism risk of one group relative to another
+
+--
+
+This will normally result in group A having a **higher false positive rate** than group B
+
+---
+
+## Statistical bias
+
+"For some people, to say that a decision procedure is 'biased'  is to say that it is statistically unsound. A risk-assessment algorithm is racially biased in this sense if it systematically over- or understates the average risk of one racial group relative to another."
+
+Two reasons to think COMPAS is statistically biased:
+
+1. Unequal **false positive rates**
+2. **Biased proxy** for recidivism risk
+
+---
+
+class: img-right-full
+
+## Biased proxy?
+
+![](compass.jpeg)
+
+COMPAS uses **risk of being charged** as a proxy for **risk of recidivism**
+
+**Claim:** as a result, COMPAS is **statistically biased** against black defendants
+
+???
+
+Statistically biased against black defendants = **overestimates** the recidivism risk posed by black defendants relative to white defendants (on average)
+
+---
+
+class: smaller
+
+## Biased proxy?
+
+Mayson:
+
+> "The reason that risk-assessment tools predict arrest rather than crime is that the data do not allow for direct crime prediction. To determine who is likely to  commit crime in the future, one would have to look at who has committed crimes in the past. But **we do not know precisely who has committed crimes in the past**. ... [Our] record of past crimes is really a record of crime reports and law enforcement actions, and the relationship of that record  to actual crimes committed is opaque. Given this fundamental data limitation,  most contemporary criminal justice risk-assessment tools predict arrest on the premise that it is the **best available proxy** for crime commission."
+
+???
+
+Why does COMPAS use risk of being charged as a proxy for recidivism? 
+
+---
+
+## Biased proxy?
+
+Uncontroversial that the base rate of being rearrested is higher for black defendants than white defendants
+
+Controversial to what extent this the product of
+
+1. disparate base rates of **actual recidivism**
+2. biased **law enforcement** 
+
+???
+
+If the higher base rate of rearrest for black defendants is the product of biased law enforcement, then using risk of rearrest as a proxy for recidivism risk will result in overestimating the recidivism risk posed by black defendants relative to white defendants 
+
+On the other hand, if black defendants are more likely to be arrested on average because they are more likely to commit new crimes on average, then using risk of rearrest won't result in statistical bias
+
+---
+
+## Biased law enforcement?
+
+Mayson:
+
+> "There is no question that, in many places, police have **disproportionately arrested people of color** relative to the rates at which black people and white people, respectively, commit crimes. Marijuana arrest rates are an oft-cited example: although black and white people use marijuana at approximately equal rates, black  people have been arrested for marijuana much more frequently. This also appears to be the case with drug arrests overall."
+
+---
+
+## Different base rates of recidivism?
+
+Mayson:
+
+> "[C]rime is the product of complex social and economic determinants that, in a race- and class-stratified society, may also **correlate with demographic traits**. Where that is so, the incidence of a given type of crime may vary among demographic  groups."
+
+---
+
+class: smaller
+
+## Different base rates of recidivism?
+
+Mayson:
+
+> "A number of **recent studies** have found ... that contemporary white and Hispanic college students use illicit drugs at significantly higher rates than African American and Asian students. White men have committed the  vast majority of mass shootings in the United States during the last thirty years. Nationwide firearm homicide rates have been higher in recent decades in black communities than in white ones .... High-stakes financial crimes are disproportionately committed by people working in the upper echelons of financial-services firms, and these individuals are disproportionately white men."
+
+---
+
+class: img-right-full
+
+## Biased proxy?
+
+![](compass.jpeg)
+
+COMPAS uses **risk of being charged** as a proxy for **risk of recidivism**
+
+**Claim:** as a result, COMPAS is **statistically biased** against black defendants
+
+???
+
+We don't know whether this claim is true
+
+---
+
+class: smaller
+
+## Unfair input features?
+
+![image-20211115124207861](image-20211115124207861.png# center)
+
+### Question
+
+Why might someone think that basing pretrial detention decisions on these features is unfair?
+
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script>
+  var slideshow = remark.create({
+    ratio:'16:9'
+  });
+</script>
+  </body>
+</html>
