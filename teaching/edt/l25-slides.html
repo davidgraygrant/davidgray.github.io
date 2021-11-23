@@ -8,18 +8,10 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
-    <textarea id="source">
+<textarea id="source">
 class: sectiontitle
 
 # L25 Is using COMPAS unfair?
-
----
-
-## Three arguments that using COMPAS is unfair
-
-1. Higher **false positive rate** for black defendants than white defendants
-2. Systematically **overestimates** recidivism risk for black defendants relative to white defendants
-3. Uses **input features** that are an unfair basis for making pretrial detention decisions
 
 ???
 
@@ -28,6 +20,12 @@ Caveat: all of these issues are very controversial! Both politically and among t
 - We're not looking for a particular answer -- we don't know the answers
 - Any answer is completely fine provided you explain why a reasonable person might find it plausible
 - What we're looking for evidence that you have thought through the issues discussed in lecture and the readings
+
+---
+
+## Arguments that using COMPAS is unfair
+
+1. Higher **false positive rate** for black defendants than white defendants
 
 ---
 
@@ -51,15 +49,13 @@ $$\text{BR} = \frac{\text{TP+FN}}{\text{TP+TN+FP+FN}} = \frac{\text{defendants t
 >
 > The formula was particularly likely to **falsely flag black defendants as future criminals**, wrongly labeling them this way at almost twice the rate as white defendants.".red[\*]
 
-.footer[.red[\*] Angwin et al. (2016), "Machine Bias"]
+--
 
----
+**Claim:** black defendants are exposed to a greater risk of being a false positive than white defendants, and so are treated less favorably than white defendants
 
-## Three arguments that using COMPAS is unfair
+???
 
-1. Higher **false positive rate** for black defendants than white defendants
-2. Systematically **overestimates** recidivism risk for black defendants relative to white defendants
-3. Uses **input features** that are an unfair basis for making pretrial detention decisions
+We should distinguish this concern from a closely related but distinct concern—that COMPAS is statistically biased against black defendants
 
 ---
 
@@ -120,23 +116,17 @@ Two reasons to think COMPAS is statistically biased:
 
 class: img-right-full
 
-## Biased proxy?
+## COMPAS' proxy for recidivism risk
 
 ![](compass.jpeg)
 
 COMPAS uses **risk of being charged** as a proxy for **risk of recidivism**
 
-**Claim:** as a result, COMPAS is **statistically biased** against black defendants
-
-???
-
-Statistically biased against black defendants = **overestimates** the recidivism risk posed by black defendants relative to white defendants (on average)
-
 ---
 
 class: smaller
 
-## Biased proxy?
+## COMPAS' proxy for recidivism risk
 
 Mayson:
 
@@ -145,6 +135,26 @@ Mayson:
 ???
 
 Why does COMPAS use risk of being charged as a proxy for recidivism? 
+
+---
+
+class: img-right-full
+
+## COMPAS' proxy for recidivism risk
+
+![](compass.jpeg)
+
+COMPAS uses **risk of being charged** as a proxy for **risk of recidivism**
+
+- Why might someone think that this is morally problematic?
+
+--
+
+- **Claim:** because it results in **statistical bias** against black defendants
+
+???
+
+COMPAS is statistically biased against black defendants = **overestimates** the recidivism risk posed by black defendants relative to white defendants (on average)
 
 ---
 
@@ -201,9 +211,23 @@ COMPAS uses **risk of being charged** as a proxy for **risk of recidivism**
 
 **Claim:** as a result, COMPAS is **statistically biased** against black defendants
 
+- Controversial whether this is true and if so, to what extent
+- Hard to get reliable data
+
 ???
 
 We don't know whether this claim is true
+
+---
+
+## Arguments that using COMPAS is unfair
+
+1. Higher **false positive rate** for black defendants than white defendants
+2. Systematically **overestimates** recidivism risk for black defendants relative to white defendants
+
+--
+
+Uses **input features** that are an unfair basis for making pretrial detention decisions
 
 ---
 
@@ -216,6 +240,23 @@ class: smaller
 ### Question
 
 Why might someone think that basing pretrial detention decisions on these features is unfair?
+
+---
+
+## Unfair input features?
+
+**Claim:** basing estimates of recidivism risk on input features that are statistically correlated with race/class is unfair
+
+1. Why might someone think this? (Can you think of more than one possible reason?)
+2. What reasons do we have to continue relying on features of this kind—despite the fact that they are correlated with race/class?
+
+---
+
+## Arguments that using COMPAS is unfair
+
+1. Higher **false positive rate** for black defendants than white defendants
+2. Systematically **overestimates** recidivism risk for black defendants relative to white defendants
+3. Uses **input features** that are an unfair basis for making pretrial detention decisions
 
 </textarea>
 
