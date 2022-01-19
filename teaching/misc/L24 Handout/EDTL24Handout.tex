@@ -1,0 +1,57 @@
+% Created 2021-11-17 Wed 12:14
+% Intended LaTeX compiler: pdflatex
+\documentclass{dmghandout}
+\author{EDT}
+\date{11/18/2021}
+\title{The COMPAS Debate}
+\hypersetup{
+ pdfauthor={EDT},
+ pdftitle={The COMPAS Debate},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.5)}, 
+ pdflang={English}}
+\begin{document}
+
+
+\section*{COMPAS}
+\label{sec:org6fc921d}
+
+Recidivism prediction instrument developed by Northpointe, inc.
+\begin{itemize}
+\item Estimates risk of committing a crime within 2 years
+\item Uses probability of being charged with a new crime as a proxy
+\end{itemize}
+
+\section*{TP, TN, FP, FN}
+\label{sec:orga06fa52}
+
+\emph{True positive (TP):} labeled high risk, reoffends \\
+\emph{True negative (TN):} labeled low risk, doesn't reoffend \\
+\emph{False positive (FP):} labeled high risk, doesn't reoffend \\
+\emph{False negative (FN):} labeled low risk, reoffends \\
+
+\section*{False positive rate}
+\label{sec:org470674d}
+
+The probability that a randomly selected defendant who does not reoffend will be labeled “high risk”
+
+$$\text{FPR} = \frac{\text{FP}}{\text{FP+TN}} = \frac{\text{labeled HR, no recidivism}}{\text{no recidivism}}$$
+
+\section*{Equal False Positive Rates}
+\label{sec:orgd7155ae}
+
+The false positive rate for black defendants is similar to the false positive rate for white defendants
+
+\section*{Equal Calibration}
+\label{sec:org1c877f6}
+
+Defendants who receive the same risk score reoffend at similar rates, regardless of race
+
+\section*{Base Rate}
+\label{sec:org5c219c1}
+
+The percentage of defendants from the group that reoffend
+
+$$\text{BR} = \frac{\text{TP+FN}}{\text{TP+TN+FP+FN}} = \frac{\text{defendants that reoffend}}{\text{all defendants}}$$
+\end{document}
